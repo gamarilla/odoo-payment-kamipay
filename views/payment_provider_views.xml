@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="payment_provider_form" model="ir.ui.view">
+        <field name="name">KamiPay Provider Form</field>
+        <field name="model">payment.provider</field>
+        <field name="inherit_id" ref="payment.payment_provider_form"/>
+        <field name="arch" type="xml">
+            <group name="provider_credentials" position="inside">
+                <group invisible="code != 'kamipay'">
+                    <field name="kamipay_api_key" 
+                           string="API Key" 
+                           required="code == 'kamipay' and state != 'disabled'" 
+                           password="True"/>
+                    <field name="kamipay_api_secret" 
+                           string="API Secret" 
+                           required="code == 'kamipay' and state != 'disabled'" 
+                           password="True"/>
+                    <field name="kamipay_signature_key"
+                           string="Webhook Signature Key"
+                           required="code == 'kamipay' and state != 'disabled'"
+                           password="True"/>
+                    <field name="kamipay_wallet_address" 
+                           string="USDT Wallet Address" 
+                           required="code == 'kamipay' and state != 'disabled'"/>
+                </group>
+            </group>
+        </field>
+    </record>
+</odoo>

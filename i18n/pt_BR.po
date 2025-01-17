@@ -1,0 +1,352 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* payment_kamipay
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-01-16 23:27+0000\n"
+"PO-Revision-Date: 2025-01-17 00:32+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.5\n"
+
+#. module: payment_kamipay
+#: model_terms:ir.ui.view,arch_db:payment_kamipay.qr_display_page
+msgid ""
+"<small><i class=\"fa fa-clock-o\"/>This QR code will expire in 10 minutes. "
+"Please complete your payment before it expires.</small>"
+msgstr ""
+"<small><i class=\"fa fa-clock-o\"/>Este código QR irá expirar em 10 "
+"minutos. Por favor, conclua seu pagamento antes que ele expire.</small>"
+
+#. module: payment_kamipay
+#: model_terms:ir.ui.view,arch_db:payment_kamipay.test_console_page
+msgid "<strong>Amount BRL:</strong>"
+msgstr "<strong>Valor em R$:</strong>"
+
+#. module: payment_kamipay
+#: model_terms:ir.ui.view,arch_db:payment_kamipay.test_console_page
+msgid "<strong>Amount USDT:</strong>"
+msgstr "<strong>Valor em USDT:</strong>"
+
+#. module: payment_kamipay
+#: model_terms:ir.ui.view,arch_db:payment_kamipay.test_console_page
+msgid "<strong>Operation ID:</strong>"
+msgstr "<strong>ID Operação :</strong>"
+
+#. module: payment_kamipay
+#: model_terms:ir.ui.view,arch_db:payment_kamipay.test_console_page
+msgid "<strong>Transaction Reference:</strong>"
+msgstr "<strong>Referência de Transação:</strong>"
+
+#. module: payment_kamipay
+#: model:ir.model.fields,field_description:payment_kamipay.field_payment_provider__kamipay_api_key
+#: model_terms:ir.ui.view,arch_db:payment_kamipay.payment_provider_form
+msgid "API Key"
+msgstr ""
+
+#. module: payment_kamipay
+#: model:ir.model.fields,field_description:payment_kamipay.field_payment_provider__kamipay_api_secret
+#: model_terms:ir.ui.view,arch_db:payment_kamipay.payment_provider_form
+msgid "API Secret"
+msgstr ""
+
+#. module: payment_kamipay
+#: model:ir.model.fields,field_description:payment_kamipay.field_payment_provider__kamipay_access_token
+msgid "Access Token"
+msgstr ""
+
+#. module: payment_kamipay
+#: model_terms:ir.ui.view,arch_db:payment_kamipay.qr_display_page
+msgid "Amount in Brazilian Real:"
+msgstr "Valor em Reais:"
+
+#. module: payment_kamipay
+#: model:ir.model.fields,field_description:payment_kamipay.field_payment_provider__code
+msgid "Code"
+msgstr "Código"
+
+#. module: payment_kamipay
+#. odoo-python
+#: code:addons/payment_kamipay/models/payment_provider.py:0
+#, python-format
+msgid "Could not authenticate with KamiPay: %s"
+msgstr "Não foi possível autenticar com KamiPay: %s"
+
+#. module: payment_kamipay
+#. odoo-python
+#: code:addons/payment_kamipay/models/payment_provider.py:0
+#, python-format
+msgid "Could not connect to KamiPay: %s"
+msgstr "Não foi possível conectar ao KamiPay: %s"
+
+#. module: payment_kamipay
+#. odoo-javascript
+#: code:addons/payment_kamipay/static/src/js/payment_kamipay.js:0
+#, python-format
+msgid "Could not simulate payment"
+msgstr "Não foi possível simular o pagamento"
+
+#. module: payment_kamipay
+#: model_terms:ir.ui.view,arch_db:payment_kamipay.test_console_page
+msgid "Current Status:"
+msgstr ""
+
+#. module: payment_kamipay
+#: model:ir.model.fields,field_description:payment_kamipay.field_payment_transaction__kamipay_emv
+msgid "EMV Code"
+msgstr "Código EMV"
+
+#. module: payment_kamipay
+#. odoo-javascript
+#: code:addons/payment_kamipay/static/src/js/payment_kamipay.js:0
+#, python-format
+msgid "Error"
+msgstr "Erro"
+
+#. module: payment_kamipay
+#: model:ir.model.fields,field_description:payment_kamipay.field_payment_transaction__kamipay_rate
+msgid "Exchange Rate"
+msgstr "Taxa de Câmbio"
+
+#. module: payment_kamipay
+#. odoo-python
+#: code:addons/payment_kamipay/controllers/main.py:0
+#, python-format
+msgid "Failed to simulate webhook: %s"
+msgstr "Falha ao simular webhook: %s"
+
+#. module: payment_kamipay
+#. odoo-python
+#: code:addons/payment_kamipay/models/payment_transaction.py:0
+#, python-format
+msgid "Invalid payment status"
+msgstr "Status de pagamento inválido"
+
+#. module: payment_kamipay
+#: model:ir.model.fields.selection,name:payment_kamipay.selection__payment_provider__code__kamipay
+msgid "KamiPay"
+msgstr ""
+
+#. module: payment_kamipay
+#: model:ir.model.fields,field_description:payment_kamipay.field_payment_transaction__kamipay_operation_id
+msgid "KamiPay Operation ID"
+msgstr "ID de Operação KamiPay"
+
+#. module: payment_kamipay
+#: model_terms:ir.ui.view,arch_db:payment_kamipay.test_console_page
+msgid "KamiPay Test Console"
+msgstr ""
+
+#. module: payment_kamipay
+#. odoo-python
+#: code:addons/payment_kamipay/models/payment_transaction.py:0
+#, python-format
+msgid "No transaction found matching Operation ID %s."
+msgstr "Nenhuma transação encontrada correspondente ao ID de Operação %s."
+
+#. module: payment_kamipay
+#: model_terms:ir.ui.view,arch_db:payment_kamipay.qr_display_page
+msgid "Open Test Console in New Window"
+msgstr ""
+
+#. module: payment_kamipay
+#. odoo-python
+#: code:addons/payment_kamipay/controllers/main.py:0
+#, python-format
+msgid "PIX KamiPay Test Console"
+msgstr "Console de Teste PIX KamiPay"
+
+#. module: payment_kamipay
+#. odoo-python
+#: code:addons/payment_kamipay/controllers/main.py:0
+#, python-format
+msgid "PIX QR Code for Payment"
+msgstr "Código QR PIX para pagamento"
+
+#. module: payment_kamipay
+#: model:payment.provider,name:payment_kamipay.payment_provider_kamipay
+msgid "PIX with KamiPay"
+msgstr "PIX com KamiPay"
+
+#. module: payment_kamipay
+#: model:ir.model,name:payment_kamipay.model_payment_provider
+msgid "Payment Provider"
+msgstr "Provedor de Pagamento"
+
+#. module: payment_kamipay
+#: model:ir.model,name:payment_kamipay.model_payment_transaction
+msgid "Payment Transaction"
+msgstr "Transação de Pagamento"
+
+#. module: payment_kamipay
+#. odoo-python
+#: code:addons/payment_kamipay/models/payment_transaction.py:0
+#, python-format
+msgid "Payment expired after 2 minutes."
+msgstr "Pagamento expirou após 2 minutos."
+
+#. module: payment_kamipay
+#. odoo-python
+#: code:addons/payment_kamipay/models/payment_transaction.py:0
+#, python-format
+msgid "Payment failed"
+msgstr "Pagamento falhou"
+
+#. module: payment_kamipay
+#. odoo-python
+#: code:addons/payment_kamipay/controllers/main.py:0
+#, python-format
+msgid "Payment timeout - QR code expired"
+msgstr "Tempo limite de pagamento - Código QR expirado"
+
+#. module: payment_kamipay
+#: model_terms:payment.provider,pre_msg:payment_kamipay.payment_provider_kamipay
+msgid ""
+"Payments processed through Brazil's PIX network by our provider KamiPay. "
+"Payment is instant by scanning a QR code from any PIX-enabled banking app. "
+"The process is quick and secure.\n"
+"\n"
+" <br>"
+msgstr ""
+"Pagamentos processados através da rede PIX do Brasil pelo nosso provedor "
+"KamiPay. O pagamento é instantâneo através da leitura de um código QR de "
+"qualquer aplicativo bancário habilitado para PIX. O processo é rápido e "
+"seguro.\n"
+"\n"
+" <br>"
+
+#. module: payment_kamipay
+#. odoo-python
+#: code:addons/payment_kamipay/models/payment_transaction.py:0
+#, python-format
+msgid "Received data with missing operation ID."
+msgstr "Dados recebidos com ID de operação faltando."
+
+#. module: payment_kamipay
+#: model_terms:ir.ui.view,arch_db:payment_kamipay.qr_display_page
+msgid ""
+"Scan the QR code above using any PIX-enabled banking app to make your "
+"payment"
+msgstr ""
+"Escaneie o código QR acima usando qualquer aplicativo bancário habilitado "
+"para PIX para fazer seu pagamento"
+
+#. module: payment_kamipay
+#: model_terms:ir.ui.view,arch_db:payment_kamipay.test_console_page
+msgid "Simulate Done"
+msgstr ""
+
+#. module: payment_kamipay
+#: model_terms:ir.ui.view,arch_db:payment_kamipay.test_console_page
+msgid "Simulate Failed"
+msgstr ""
+
+#. module: payment_kamipay
+#: model_terms:ir.ui.view,arch_db:payment_kamipay.test_console_page
+msgid "Simulate Processing"
+msgstr ""
+
+#. module: payment_kamipay
+#. odoo-javascript
+#: code:addons/payment_kamipay/static/src/js/payment_kamipay.js:0
+#, python-format
+msgid "Test Simulation"
+msgstr ""
+
+#. module: payment_kamipay
+#: model:ir.model.fields,help:payment_kamipay.field_payment_provider__kamipay_api_key
+msgid "The API key provided by KamiPay"
+msgstr "A  API key fornecida pelo KamiPay"
+
+#. module: payment_kamipay
+#: model:ir.model.fields,help:payment_kamipay.field_payment_provider__kamipay_api_secret
+msgid "The API secret provided by KamiPay"
+msgstr "O API secret fornecido pelo KamiPay"
+
+#. module: payment_kamipay
+#: model:ir.model.fields,help:payment_kamipay.field_payment_provider__code
+msgid "The technical code of this payment provider."
+msgstr "O código técnico deste provedor de pagamento."
+
+#. module: payment_kamipay
+#: model:ir.model.fields,field_description:payment_kamipay.field_payment_provider__kamipay_token_expiry
+msgid "Token Expiry"
+msgstr "Expiração do Token"
+
+#. module: payment_kamipay
+#: model_terms:ir.ui.view,arch_db:payment_kamipay.test_console_page
+msgid "Transaction Status Log"
+msgstr ""
+
+#. module: payment_kamipay
+#: model:ir.model.fields,field_description:payment_kamipay.field_payment_transaction__kamipay_usdt_amount
+msgid "USDT Amount"
+msgstr "Valor em USDT"
+
+#. module: payment_kamipay
+#: model:ir.model.fields,field_description:payment_kamipay.field_payment_provider__kamipay_wallet_address
+#: model_terms:ir.ui.view,arch_db:payment_kamipay.payment_provider_form
+msgid "USDT Wallet Address"
+msgstr "Endereço da Carteira USDT"
+
+#. module: payment_kamipay
+#. odoo-javascript
+#: code:addons/payment_kamipay/static/src/js/payment_kamipay.js:0
+#, python-format
+msgid "Webhook simulation sent"
+msgstr ""
+
+#. module: payment_kamipay
+#. odoo-python
+#: code:addons/payment_kamipay/models/payment_transaction.py:0
+#, python-format
+msgid "Your PIX payment has been confirmed."
+msgstr ""
+
+#. module: payment_kamipay
+#. odoo-python
+#: code:addons/payment_kamipay/models/payment_transaction.py:0
+#, python-format
+msgid "Your PIX payment has been received and is being processed."
+msgstr ""
+
+#. module: payment_kamipay
+#: model:ir.model.fields,help:payment_kamipay.field_payment_provider__kamipay_wallet_address
+msgid "Your USDT wallet address where funds will be received"
+msgstr "Seu endereço de carteira USDT onde os fundos serão recebidos"
+
+#. module: payment_kamipay
+#: model_terms:payment.provider,auth_msg:payment_kamipay.payment_provider_kamipay
+msgid "Your payment has been authorized."
+msgstr "Seu pagamento foi autorizado."
+
+#. module: payment_kamipay
+#: model_terms:payment.provider,done_msg:payment_kamipay.payment_provider_kamipay
+msgid "Your payment has been successfully processed."
+msgstr "Seu pagamento foi processado com sucesso."
+
+#. module: payment_kamipay
+#: model_terms:payment.provider,pending_msg:payment_kamipay.payment_provider_kamipay
+msgid ""
+"Your payment has been successfully received by the PIX network in Brazil "
+"and is being transferred to our account. You can leave this page or wait a "
+"few seconds until the credit is confirmed. In case of error, the payment "
+"will be refunded."
+msgstr ""
+"Seu pagamento foi recebido com sucesso pela rede PIX no Brasil e está sendo "
+"transferido para nossa conta. Você pode sair desta página ou aguardar "
+"alguns segundos até que o crédito seja confirmado. Em caso de erro, o "
+"pagamento será reembolsado."
+
+#. module: payment_kamipay
+#: model_terms:payment.provider,cancel_msg:payment_kamipay.payment_provider_kamipay
+msgid "Your payment has expired."
+msgstr "Seu pagamento expirou."

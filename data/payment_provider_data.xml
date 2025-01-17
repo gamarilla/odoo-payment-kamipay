@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="payment_provider_kamipay" model="payment.provider">
+        <field name="name">PIX with KamiPay</field>
+        <field name="code">kamipay</field>
+        <field name="state">test</field>
+        <!-- <field name="is_published">False</field> -->
+        <field name="company_id" ref="base.main_company"/>
+        <field name="redirect_form_view_id" ref="payment_kamipay.redirect_form"/>
+        <field name="image_128" type="base64" file="payment_kamipay/static/description/icon.png"/>
+        <!-- Adding default empty value for required field -->
+        <field name="kamipay_signature_key">dummy_signature_key</field>
+    </record>
+</odoo>
