@@ -1,4 +1,4 @@
-from datetime import timedelta
+from datetime import datetime, timedelta, timezone
 
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
@@ -14,7 +14,7 @@ class PaymentTransaction(models.Model):
 
     kamipay_operation_id = fields.Char("KamiPay Operation ID", index=True, copy=False)
     kamipay_emv = fields.Char("PIX code (EMV)", copy=False, help="Código 'copia e cola' del PIX; el QR es este texto.")
-    kamipay_usdt_amount = fields.Float("USDT Amount", digits='Product Price', copy=False)
+    kamipay_usdt_amount = fields.Float("USDT Amount", digits=(16, 6), copy=False)
     kamipay_rate = fields.Float("Exchange Rate (BRL/USDT)", digits=(12, 6), copy=False)
     kamipay_expires_at = fields.Datetime("QR expires at", copy=False)
     kamipay_is_expired = fields.Boolean(compute='_compute_kamipay_is_expired')
@@ -47,12 +47,18 @@ class PaymentTransaction(models.Model):
         }, reference=self.reference)
         if not data.get('operation_id') or not data.get('emv'):
             raise ValidationError(_("KamiPay did not return a PIX charge (%s).", data))
+        # Respuesta (sandbox, ene-2025): {"emv", "operation_id", "amount_brl", "amount_usdt", "rate", "date", "expiration"}
+        # con date/expiration en epoch Unix. Se usa el vencimiento del servidor; si no viene, el pedido ('expire').
+        try:
+            expires_at = datetime.fromtimestamp(int(data['expiration']), tz=timezone.utc).replace(tzinfo=None)
+        except (KeyError, TypeError, ValueError):
+            expires_at = fields.Datetime.now() + timedelta(seconds=const.QR_EXPIRY_SECONDS)
         self.write({
-            'kamipay_operation_id': data['operation_id'],
+            'kamipay_operation_id': str(data['operation_id']),
             'kamipay_emv': data['emv'],
             'kamipay_usdt_amount': float(data.get('amount_usdt') or 0),
             'kamipay_rate': float(data.get('rate') or 0),
-            'kamipay_expires_at': fields.Datetime.now() + timedelta(seconds=const.QR_EXPIRY_SECONDS),
+            'kamipay_expires_at': expires_at,
         })
         self._set_pending(state_message=_("Waiting for the PIX payment (scan the QR code)."))
 
