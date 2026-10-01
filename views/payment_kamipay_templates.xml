@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Formulario de redirección: lleva a /payment/kamipay/process, que crea el cobro y redirige a /payment/status -->
+    <template id="redirect_form">
+        <form t-att-action="api_url" method="post">
+            <input type="hidden" name="reference" t-att-value="reference"/>
+        </form>
+    </template>
+
+    <!-- Página de estado de Odoo: mientras la transacción KamiPay está pendiente y el QR vigente, se muestra el QR.
+         El polling de /payment/status/poll (core) redirige solo cuando el webhook/cron la confirma o cancela. -->
+    <template id="kamipay_state_header" inherit_id="payment.state_header">
+        <xpath expr="//div[@name='o_payment_status_alert']" position="before">
+            <t t-set="kamipay_tx" t-value="tx.provider_id.sudo().code == 'kamipay' and tx.state == 'pending' and tx.kamipay_emv and not tx.kamipay_is_expired"/>
+            <div t-if="kamipay_tx" class="o_kamipay_qr card mb-4"
+                 t-att-data-expires-at="tx.kamipay_expires_at and tx.kamipay_expires_at.isoformat()"
+                 t-att-data-tx-id="tx.id" t-att-data-is-test="tx.provider_id.sudo().state == 'test'">
+                <div class="card-body text-center">
+                    <h4 class="mb-3">Pague con PIX escaneando el código</h4>
+                    <img class="border rounded mb-3" t-attf-src="/report/barcode/QR/#{tx.kamipay_emv}?width=280&amp;height=280" alt="PIX QR"/>
+                    <p class="mb-1 fs-5"><strong t-out="tx.amount" t-options="{'widget': 'monetary', 'display_currency': tx.currency_id}"/></p>
+                    <p class="text-muted small mb-3">
+                        El código vence en <span class="o_kamipay_countdown fw-bold">--:--</span>.
+                        Cuando el banco confirme el pago esta página continuará sola.
+                    </p>
+                    <div class="input-group input-group-sm mb-2">
+                        <input type="text" class="form-control font-monospace o_kamipay_emv" readonly="readonly" t-att-value="tx.kamipay_emv"/>
+                        <button type="button" class="btn btn-outline-secondary o_kamipay_copy"><i class="fa fa-copy"/> Copiar código PIX</button>
+                    </div>
+                    <small class="text-muted">"PIX copia e cola": pegue el código en su app bancaria si no puede escanear.</small>
+                    <div t-if="tx.provider_id.sudo().state == 'test'" class="mt-3">
+                        <a t-attf-href="/payment/kamipay/test/console/#{tx.id}" target="_blank" class="btn btn-sm btn-secondary">Consola de prueba</a>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="test_console_page" name="KamiPay test console">
+        <t t-call="web.frontend_layout">
+            <t t-set="title" t-value="title"/>
+            <div class="container my-4 o_kamipay_test_console" t-att-data-tx-id="tx.id">
+                <h3>KamiPay — consola de prueba</h3>
+                <table class="table table-sm w-auto">
+                    <tr><th>Referencia</th><td t-out="tx.reference"/></tr>
+                    <tr><th>Operation ID</th><td t-out="tx.kamipay_operation_id"/></tr>
+                    <tr><th>Importe</th><td><t t-out="tx.amount"/> BRL / <t t-out="tx.kamipay_usdt_amount"/> USDT (cotización <t t-out="tx.kamipay_rate"/>)</td></tr>
+                    <tr><th>Estado Odoo</th><td class="o_kamipay_state" t-out="tx.state"/></tr>
+                    <tr><th>Vence</th><td t-out="tx.kamipay_expires_at"/></tr>
+                </table>
+                <div class="d-flex gap-2 flex-wrap">
+                    <button class="btn btn-primary o_kamipay_simulate" data-status="processing">Simular webhook: processing</button>
+                    <button class="btn btn-success o_kamipay_simulate" data-status="done">Simular webhook: done</button>
+                    <button class="btn btn-warning o_kamipay_simulate" data-status="expired">Simular webhook: expired</button>
+                    <button class="btn btn-danger o_kamipay_simulate" data-status="failed">Simular webhook: failed</button>
+                    <button class="btn btn-outline-secondary o_kamipay_sync">Consultar estado en KamiPay</button>
+                </div>
+                <pre class="mt-3 small text-muted o_kamipay_log"/>
+            </div>
+        </t>
+    </template>
+</odoo>
